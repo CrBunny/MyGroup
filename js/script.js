@@ -5,17 +5,17 @@ $(document).ready(function(){
     const sliderItem = $('.slider-item');
     const sliderItemWidth = sliderItem.width();
     const sliderContainerWidth = sliderContainer.width();
-    // ширина дорожки определяется как разница между шириной всех картинок и шириной контейнера
-    // разница нужна для того, чтобы прокрутка не проводилась дальше последнего фото
+    // ширина доріжки визначається як різниця міжд шириною усіх картинок і шириною контейнера
+    // різниця потрібна для того, щоб прокрутка не проводилась далі останнього фото
     const sliderTrackWidth = sliderItem.length * sliderItemWidth - sliderContainerWidth; 
     const sliderButtonPrev = $('.arrow-left');
     const sliderButtonNext = $('.arrow-right');
 
     sliderButtonPrev.on('click', function(){
-        sliderPosition += sliderItemWidth; // увеличиваем отступ при нажатии назад
+        sliderPosition += sliderItemWidth; // збільшуємо відступ при натисканні назад
 
-        // поскольку отступ будет всегда отрицательный, нужно сравнивать с нулем, 
-        // чтобы исключить пустые прокрутки
+        // оскільки відступ завжди буде негативний, потрібно порівняти з нулем, 
+        // щоб прибрати пусті прокрутки
         if (sliderPosition > 0) {
             sliderPosition = 0;
         }
@@ -26,8 +26,8 @@ $(document).ready(function(){
     sliderButtonNext.on('click', function(){
         sliderPosition -= sliderItemWidth;
 
-        // так как отступы отрицательные, нужно сравнить с отрицательной длинной дорожки, 
-        // чтобы исключить пустые прокрутки
+        // так як відступи негативні, потрібно порівняти з негативною довжиною доріжки, 
+        // щоб прибрати пусті прокрутки
         if (sliderPosition < -sliderTrackWidth) {
             sliderPosition = -sliderTrackWidth;
         }
@@ -36,7 +36,7 @@ $(document).ready(function(){
     });
 
 
-    // скрываем кнопки prev/next, когда нельзя больше крутить
+    // сховуємо кнопки prev/next, коли неможна більше крутити
     const sliderButtons = () => {
         if (sliderPosition == 0) {
             sliderButtonPrev.hide();
